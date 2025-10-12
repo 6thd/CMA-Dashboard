@@ -1,0 +1,78 @@
+@page
+@model CMA.Web.Pages.SettingsModel
+@{
+    ViewData["Title"] = "Settings";
+}
+
+<form method="post">
+    <div class="space-y-8">
+        <div class="flex justify-between items-center">
+            <h1 class="text-3xl font-bold text-white text-shadow">Settings</h1>
+            <button type="submit" class="px-6 py-2 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 shadow-lg">
+                Save Settings
+            </button>
+        </div>
+
+        <!-- Notification Settings -->
+        <div class="bg-gray-900/50 backdrop-blur-xl border border-white/10 shadow-xl rounded-lg p-6">
+            <h2 class="text-xl font-bold text-white text-shadow mb-4">Notification Preferences</h2>
+            <div class="divide-y divide-white/10">
+                <!-- Toggles will be simple checkboxes for now -->
+                <div class="flex items-center justify-between py-3">
+                    <label for="registrations" class="text-gray-200">New Student Registrations</label>
+                    <input type="checkbox" id="registrations" asp-for="NotificationPrefs.Registrations" />
+                </div>
+                <div class="flex items-center justify-between py-3">
+                    <label for="submissions" class="text-gray-200">Exam Submissions</label>
+                    <input type="checkbox" id="submissions" asp-for="NotificationPrefs.Submissions" />
+                </div>
+                <div class="flex items-center justify-between py-3">
+                    <label for="highScores" class="text-gray-200">High Score Alerts</label>
+                    <input type="checkbox" id="highScores" asp-for="NotificationPrefs.HighScores" />
+                </div>
+                <div class="flex items-center justify-between py-3">
+                    <label for="examPublished" class="text-gray-200">New Exam Published</label>
+                    <input type="checkbox" id="examPublished" asp-for="NotificationPrefs.ExamPublished" />
+                </div>
+            </div>
+        </div>
+
+        <!-- Display Settings -->
+        <div class="bg-gray-900/50 backdrop-blur-xl border border-white/10 shadow-xl rounded-lg p-6">
+            <h2 class="text-xl font-bold text-white text-shadow mb-4">Display & Data</h2>
+            <div class="space-y-4">
+                <div>
+                    <label for="items-per-page" class="block text-sm font-medium text-gray-200">Items per Page</label>
+                    <select id="items-per-page" asp-for="DisplayPrefs.ItemsPerPage" class="mt-1 block w-full sm:w-1/2 pl-3 pr-10 py-2 text-base bg-gray-800/50 border-white/30 focus:outline-none focus:ring-blue-500 sm:text-sm rounded-md text-white">
+                        <option value="10">10</option>
+                        <option value="25">25</option>
+                        <option value="50">50</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="date-range" class="block text-sm font-medium text-gray-200">Default Date Range for Reports</label>
+                    <select id="date-range" asp-for="DisplayPrefs.DefaultDateRange" class="mt-1 block w-full sm:w-1/2 pl-3 pr-10 py-2 text-base bg-gray-800/50 border-white/30 focus:outline-none focus:ring-blue-500 sm:text-sm rounded-md text-white">
+                        <option value="7d">Last 7 Days</option>
+                        <option value="30d">Last 30 Days</option>
+                        <option value="90d">Last 90 Days</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <!-- Knowledge Base Section -->
+        <div class="bg-gray-900/50 backdrop-blur-xl border border-white/10 shadow-xl rounded-lg p-6">
+            <h2 class="text-xl font-semibold text-white">AI Knowledge Base (RAG)</h2>
+            
+            <div class="mt-4">
+                <label for="pdfFile" class="block text-sm font-medium text-gray-200">Upload CMA Curriculum PDF</label>
+                <input type="file" name="pdfFile" id="pdfFile" class="mt-1 block w-full text-sm text-gray-300 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100"/>
+            </div>
+
+            <p class="text-gray-300 my-4">
+                Or, paste the content directly below to provide context for the AI assistant.
+            </p>
+            <textarea asp-for="KnowledgeBase" placeholder="Paste your CMA syllabus/content here..." class="w-full h-96 p-3 bg-gray-800/50 border border-white/20 rounded-md text-gray-200 focus:ring-2 focus:ring-blue-500 focus:outline-none"></textarea>
+        </div>
+    </div>
+</form>

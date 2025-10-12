@@ -1,0 +1,49 @@
+@page
+@model CMA.Web.Pages.AnalyticsModel
+@{
+    ViewData["Title"] = "Analytics";
+}
+
+<div class="space-y-6">
+    <h1 class="text-3xl font-bold text-white text-shadow">Analytics Dashboard</h1>
+
+    <!-- Filters -->
+    <div class="bg-gray-900/50 backdrop-blur-xl border border-white/10 rounded-lg shadow-xl p-4">
+        <form method="get" class="flex items-center space-x-4">
+            <div>
+                <label for="start-date" class="text-sm font-medium text-gray-200">Start Date</label>
+                <input type="date" id="start-date" class="mt-1 bg-gray-800/50 border-white/20 rounded-lg px-4 py-2 text-white" />
+            </div>
+            <div>
+                <label for="end-date" class="text-sm font-medium text-gray-200">End Date</label>
+                <input type="date" id="end-date" class="mt-1 bg-gray-800/50 border-white/20 rounded-lg px-4 py-2 text-white" />
+            </div>
+            <div>
+                <label for="exam-filter" class="text-sm font-medium text-gray-200">Exam</label>
+                <select id="exam-filter" class="mt-1 bg-gray-800/50 border-white/20 rounded-lg px-4 py-2 text-white">
+                    <option value="">All Exams</option>
+                    <!-- Options would be populated from the PageModel -->
+                </select>
+            </div>
+            <div class="pt-6">
+                <button type="submit" class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">Apply Filters</button>
+            </div>
+        </form>
+    </div>
+
+    <!-- Charts -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <div class="bg-gray-900/50 backdrop-blur-xl border border-white/10 rounded-lg shadow-xl p-6">
+            <h2 class="text-xl font-bold text-white mb-4">Exam Performance (Pass/Fail)</h2>
+            <div class="h-80">
+                <p class="text-center text-gray-400">Chart placeholder</p>
+            </div>
+        </div>
+        <div class="bg-gray-900/50 backdrop-blur-xl border border-white/10 rounded-lg shadow-xl p-6">
+            <h2 class="text-xl font-bold text-white mb-4">Overall Pass/Fail Rate</h2>
+            <div class="h-80">
+                <p class="text-center text-gray-400">Chart placeholder</p>
+            </div>
+        </div>
+    </div>
+</div>

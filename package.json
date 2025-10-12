@@ -1,0 +1,10 @@
+{
+  "dependencies": {
+    "@types/pdfjs-dist": "^2.10.378",
+    "pdfjs-dist": "^5.4.296",
+    "vite": "^7.1.9"
+  },
+  "devDependencies": {
+    "typescript": "^5.9.3"
+  }
+}

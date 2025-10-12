@@ -1,0 +1,44 @@
+@page
+@model CMA.Web.Pages.IndexModel
+@{
+    ViewData["Title"] = "Dashboard";
+}
+
+<div class="space-y-8">
+    <!-- Stat Cards -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="bg-gray-900/50 backdrop-blur-xl border border-white/10 rounded-lg shadow-xl p-6 flex items-center justify-between">
+            <div>
+                <p class="text-sm font-medium text-gray-200">Total Students</p>
+                <p class="text-3xl font-bold text-white">@Model.Stats.TotalStudents</p>
+            </div>
+            <div class="bg-blue-500/20 text-blue-300 p-3 rounded-full">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm-9 3a2 2 0 11-4 0 2 2 0 014 0z" /></svg>
+            </div>
+        </div>
+        <!-- Other stat cards would go here -->
+    </div>
+
+    <!-- Charts and Recent Activity -->
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <div class="lg:col-span-2 bg-gray-900/50 backdrop-blur-xl border border-white/10 rounded-lg shadow-xl p-6">
+            <h2 class="text-xl font-bold text-white mb-4">Performance by Study Unit</h2>
+            <div class="h-80">
+                <!-- Chart will be rendered here -->
+                <p class="text-center text-gray-400">Chart placeholder</p>
+            </div>
+        </div>
+        <div class="bg-gray-900/50 backdrop-blur-xl border border-white/10 rounded-lg shadow-xl p-6">
+            <h2 class="text-xl font-bold text-white mb-4">Recent Attempts</h2>
+            <ul>
+                @foreach (var attempt in Model.RecentAttempts)
+                {
+                    <li class="border-b border-white/10 py-3">
+                        <p class="font-semibold">@attempt.StudentName</p>
+                        <p class="text-sm text-gray-400">@attempt.ExamName - <span class="font-bold @(attempt.Score >= 75 ? "text-green-400" : "text-red-400")">@attempt.Score%</span></p>
+                    </li>
+                }
+            </ul>
+        </div>
+    </div>
+</div>

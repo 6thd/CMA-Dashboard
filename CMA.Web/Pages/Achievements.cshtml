@@ -1,0 +1,48 @@
+@page
+@model CMA.Web.Pages.AchievementsModel
+@{
+    ViewData["Title"] = "Achievements";
+}
+
+<div class="space-y-8">
+    <h1 class="text-3xl font-bold text-white text-shadow">Achievements & Leaderboard</h1>
+
+    <div>
+        <h2 class="text-2xl font-semibold text-white text-shadow mb-4">Your Badges</h2>
+        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-4">
+            @foreach (var achievement in Model.Achievements)
+            {
+                <div class="p-4 rounded-lg text-center bg-gray-900/50 backdrop-blur-xl border border-white/10 @(achievement.Unlocked ? "" : "opacity-50 grayscale")">
+                    <div class="text-5xl mx-auto mb-3">@achievement.Icon</div>
+                    <h3 class="font-bold text-white text-md text-shadow">@achievement.Title</h3>
+                    <p class="text-xs text-gray-300 mt-1">@achievement.Description</p>
+                </div>
+            }
+        </div>
+    </div>
+
+    <div>
+        <h2 class="text-2xl font-semibold text-white text-shadow mb-4">Top Students Leaderboard</h2>
+        <div class="bg-gray-900/50 backdrop-blur-xl border border-white/10 rounded-lg shadow-xl overflow-hidden">
+            <table class="min-w-full divide-y divide-white/10">
+                <thead class="bg-black/20">
+                    <tr>
+                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider">Rank</th>
+                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider">Student</th>
+                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider">XP</th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-white/10">
+                    @foreach (var entry in Model.Leaderboard)
+                    {
+                        <tr>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-white">@entry.Rank</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-300">@entry.StudentName</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-300">@entry.XP.ToString("N0")</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,38 @@
+@page
+@model CMA.Web.Pages.CurriculumModel
+@{
+    ViewData["Title"] = "Curriculum";
+}
+
+<div class="space-y-6">
+    <h1 class="text-3xl font-bold text-white text-shadow">CMA Curriculum</h1>
+
+    @foreach (var unit in Model.Syllabus)
+    {
+        @if (unit != null)
+        {
+            <div class="bg-gray-900/50 backdrop-blur-xl border border-white/10 rounded-lg shadow-xl p-6">
+                <h2 class="text-2xl font-bold text-white mb-4">@unit.Title</h2>
+                <div class="space-y-4">
+                    @if (unit.Sections != null)
+                    {
+                        @foreach (var syllabusSection in unit.Sections!)
+                        {
+                            @if (syllabusSection != null)
+                            {
+                                <details class="bg-gray-800/50 border border-white/10 rounded-lg">
+                                    <summary class="px-6 py-4 text-lg font-semibold text-white cursor-pointer">
+                                        @syllabusSection.Id: @syllabusSection.Title
+                                    </summary>
+                                    <div class="px-6 pb-6 text-gray-200">
+                                        <p>@syllabusSection.Content</p>
+                                    </div>
+                                </details>
+                            }
+                        }
+                    }
+                </div>
+            </div>
+        }
+    }
+</div>

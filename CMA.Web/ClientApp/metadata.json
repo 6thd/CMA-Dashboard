@@ -1,0 +1,5 @@
+{
+  "name": "Exam Prep Admin Dashboard",
+  "description": "An admin dashboard for managing students, exams, questions, and results for an exam preparation platform. Includes AI-powered question generation using Gemini.",
+  "requestFramePermissions": []
+}

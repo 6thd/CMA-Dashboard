@@ -1,0 +1,168 @@
+CMA Part 1: Financial Reporting, Planning, Performance, and Control
+
+External Financial Reporting Decisions (15% of exam)
+
+Study Unit 1: Concepts of Financial Accounting
+- Objective of general-purpose financial reporting
+- Key uses of financial statements
+- Financial vs. management accounting
+- GAAP and IFRS standards
+
+Study Unit 2: Statement of Financial Position (Balance Sheet)
+- Basic accounting equation: Assets = Liabilities + Stockholders' Equity
+- Elements of the balance sheet
+- Current vs. noncurrent classification
+- Transaction analysis
+
+Study Unit 3: Income Statement and Statement of Comprehensive Income
+- Income equation: Income = Revenues + Gains - Expenses - Losses
+- Elements of the income statement
+- Cost of goods sold calculations
+- Gross profit determination
+
+Study Unit 4: Statement of Changes in Equity and Equity Transactions
+- Statement of changes in equity components
+- Statement of retained earnings
+- Equity transactions including common/preferred stock and treasury stock
+
+Study Unit 5: Statement of Cash Flows
+- Three main activities: operating, investing, financing
+- Purpose and importance of cash flow statement
+- Direct vs. indirect method for operating activities
+
+Study Unit 6: Consolidation Accounting
+- Business combinations and control
+- Acquisition method
+- Goodwill recognition and measurement
+- Parent and subsidiary relationships
+
+Planning, Budgeting, and Forecasting (20% of exam)
+
+Study Unit 1: Strategic Planning
+- Vision and mission statements
+- SWOT analysis
+- Strategic objectives and strategy formulation
+- Strategic analysis tools
+
+Study Unit 2: Budgeting Concepts
+- Types of budgets: operating, capital, cash, financial
+- Budgeting approaches: traditional, zero-based, activity-based, kaizen
+- Budgeting process and benefits
+
+Study Unit 3: Forecasting Techniques
+- Quantitative methods: time series, moving averages, exponential smoothing
+- Qualitative methods: executive opinions, Delphi technique
+- Forecasting accuracy measures
+
+Study Unit 4: Budgeting Methodologies
+- Continuous/rolling budgets
+- Activity-based budgeting
+- Kaizen budgeting
+- Flexible budgeting
+
+Study Unit 5: Capital Budgeting
+- Evaluation methods: payback period, ARR, NPV, IRR, profitability index
+- Risk analysis in capital budgeting
+- Capital rationing
+
+Performance Management (20% of exam)
+
+Study Unit 1: Cost Management
+- Cost classifications: by behavior, traceability, relevance, function
+- Costing systems: job-order, process, activity-based
+- Cost management concepts
+
+Study Unit 2: Performance Measurement
+- Key Performance Indicators (KPIs)
+- Balanced Scorecard perspectives
+- Performance measurement frameworks
+
+Study Unit 3: Transfer Pricing
+- Transfer pricing methods: market-based, cost-based, negotiated
+- Transfer pricing objectives
+- International transfer pricing considerations
+
+Study Unit 4: Investment Centers
+- Return on Investment (ROI)
+- Residual Income (RI)
+- Economic Value Added (EVA)
+
+Cost Management (15% of exam)
+
+Study Unit 1: Cost Concepts and Classifications
+- Cost behavior: fixed, variable, mixed
+- Cost traceability: direct, indirect
+- Cost relevance: relevant, sunk, opportunity
+- Cost functions: product, period
+
+Study Unit 2: Cost Accumulation Systems
+- Job-order costing
+- Process costing
+- Hybrid costing systems
+
+Study Unit 3: Cost Allocation
+- Traditional costing vs. activity-based costing
+- ABC implementation steps
+- Cost drivers identification
+
+Study Unit 4: Overhead Analysis
+- Variable overhead variances
+- Fixed overhead variances
+- Capacity concepts and calculations
+
+Internal Controls (15% of exam)
+
+Study Unit 1: Internal Control Framework
+- COSO framework components
+- Control objectives
+- Internal control principles
+
+Study Unit 2: Risk Management
+- Risk management process
+- Types of risk
+- Risk response strategies
+
+Study Unit 3: Business Continuity
+- Business continuity planning
+- Disaster recovery
+- Emergency response procedures
+
+Study Unit 4: Fraud Prevention and Detection
+- Types of fraud
+- Fraud triangle
+- Fraud prevention measures
+
+Technology and Analytics (15% of exam)
+
+Study Unit 1: Information Systems
+- Types of information systems
+- Enterprise Resource Planning (ERP)
+- Transaction processing systems
+
+Study Unit 2: Data Analytics
+- Types of analytics: descriptive, diagnostic, predictive, prescriptive
+- Data visualization
+- Statistical analysis methods
+
+Study Unit 3: Cybersecurity
+- Key cybersecurity threats
+- Security controls
+- Data protection measures
+
+Study Unit 4: Emerging Technologies
+- Artificial Intelligence
+- Blockchain
+- Internet of Things
+- Cloud computing
+- Robotic Process Automation
+
+Key Learning Objectives:
+
+1. Demonstrate knowledge of external financial reporting decisions
+2. Demonstrate knowledge of planning, budgeting, and forecasting
+3. Demonstrate knowledge of performance management
+4. Demonstrate knowledge of cost management
+5. Demonstrate knowledge of internal control and risk management
+6. Demonstrate knowledge of technology and analytics in management accounting
+
+This comprehensive curriculum covers all topics tested in the CMA Part 1 exam with appropriate weightings for each section. The content provides the foundational knowledge needed for management accountants to make informed decisions in financial reporting, planning, performance evaluation, cost management, internal control, and technology applications.

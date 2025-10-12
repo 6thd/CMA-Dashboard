@@ -1,0 +1,99 @@
+is_global = true
+build_property.TargetFramework = net8.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = CMA.Web
+build_property.RootNamespace = CMA.Web
+build_property.ProjectDir = C:\Users\mojah\Downloads\CMA\CMA.Web\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
+build_property.RazorLangVersion = 8.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = C:\Users\mojah\Downloads\CMA\CMA.Web
+build_property._RazorSourceGeneratorDebug = 
+
+[C:/Users/mojah/Downloads/CMA/CMA.Web/Pages/Achievements.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWNoaWV2ZW1lbnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/mojah/Downloads/CMA/CMA.Web/Pages/AIDashboard.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQUlEYXNoYm9hcmQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/mojah/Downloads/CMA/CMA.Web/Pages/Analytics.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQW5hbHl0aWNzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/mojah/Downloads/CMA/CMA.Web/Pages/AuditLog.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQXVkaXRMb2cuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/mojah/Downloads/CMA/CMA.Web/Pages/Curriculum.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ3VycmljdWx1bS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/mojah/Downloads/CMA/CMA.Web/Pages/Exams.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXhhbXMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/mojah/Downloads/CMA/CMA.Web/Pages/ExamSimulation.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXhhbVNpbXVsYXRpb24uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/mojah/Downloads/CMA/CMA.Web/Pages/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/mojah/Downloads/CMA/CMA.Web/Pages/Questions.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUXVlc3Rpb25zLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/mojah/Downloads/CMA/CMA.Web/Pages/Results.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUmVzdWx0cy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/mojah/Downloads/CMA/CMA.Web/Pages/Settings.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2V0dGluZ3MuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/mojah/Downloads/CMA/CMA.Web/Pages/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/mojah/Downloads/CMA/CMA.Web/Pages/StudentProfile.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU3R1ZGVudFByb2ZpbGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/mojah/Downloads/CMA/CMA.Web/Pages/Students.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU3R1ZGVudHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/mojah/Downloads/CMA/CMA.Web/Pages/TakeExam.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVGFrZUV4YW0uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/mojah/Downloads/CMA/CMA.Web/Pages/_GlobalImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX0dsb2JhbEltcG9ydHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/mojah/Downloads/CMA/CMA.Web/Pages/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX0xheW91dC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/mojah/Downloads/CMA/CMA.Web/Pages/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/mojah/Downloads/CMA/CMA.Web/Pages/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/mojah/Downloads/CMA/CMA.Web/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 

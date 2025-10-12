@@ -1,0 +1,44 @@
+@page
+@model CMA.Web.Pages.ExamsModel
+@{
+    ViewData["Title"] = "Exams";
+}
+
+<div class="space-y-6">
+    <div class="flex justify-between items-center">
+        <h1 class="text-3xl font-bold text-white text-shadow">Manage Exams</h1>
+        <button class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">Create New Exam</button>
+    </div>
+
+    <div class="bg-gray-900/50 backdrop-blur-xl border border-white/10 rounded-lg shadow-xl">
+        <table class="min-w-full divide-y divide-white/10">
+            <thead class="bg-black/20">
+                <tr>
+                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider">Title</th>
+                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider">Description</th>
+                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider">Status</th>
+                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider">Duration</th>
+                    <th scope="col" class="relative px-6 py-3"><span class="sr-only">Actions</span></th>
+                </tr>
+            </thead>
+            <tbody class="divide-y divide-white/10">
+                @foreach (var exam in Model.Exams)
+                {
+                    <tr>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-white">@exam.Title</td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-300">@exam.Description</td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm">
+                            <span class="px-3 py-1 text-xs font-bold rounded-full text-white border @(exam.Status == "published" ? "bg-green-500/80 border-green-400" : (exam.Status == "draft" ? "bg-yellow-500/80 border-yellow-400" : "bg-gray-600/80 border-gray-500"))">
+                                @exam.Status
+                            </span>
+                        </td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-300">@exam.DurationMinutes minutes</td>
+                        <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                            <a href="#" class="text-blue-400 hover:text-blue-300">Actions</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

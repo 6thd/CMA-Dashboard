@@ -1,0 +1,65 @@
+@page
+@model CMA.Web.Pages.QuestionsModel
+@{
+    ViewData["Title"] = "Questions";
+}
+
+<div class="space-y-6">
+    <div class="flex justify-between items-center">
+        <h1 class="text-3xl font-bold text-white text-shadow">Question Bank</h1>
+        <div>
+            <button class="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 mr-2">Generate with AI</button>
+            <button class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">Add New Question</button>
+        </div>
+    </div>
+
+    <!-- Filters -->
+    <div class="bg-gray-900/50 backdrop-blur-xl border border-white/10 rounded-lg shadow-xl p-4 flex items-center space-x-4">
+        <input type="text" placeholder="Search questions..." class="w-1/3 bg-gray-800/50 border border-white/20 rounded-lg px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-blue-500" />
+        <select class="bg-gray-800/50 border border-white/20 rounded-lg px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-blue-500">
+            <option value="">All Difficulties</option>
+            <option value="easy">Easy</option>
+            <option value="medium">Medium</option>
+            <option value="hard">Hard</option>
+        </select>
+        <select class="bg-gray-800/50 border border-white/20 rounded-lg px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-blue-500">
+            <option value="">All Types</option>
+            <option value="multiple_choice">Multiple Choice</option>
+            <option value="true_false">True/False</option>
+            <option value="short_answer">Short Answer</option>
+        </select>
+    </div>
+
+    <div class="bg-gray-900/50 backdrop-blur-xl border border-white/10 rounded-lg shadow-xl">
+        <table class="min-w-full divide-y divide-white/10">
+            <thead class="bg-black/20">
+                <tr>
+                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider">Question</th>
+                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider">Type</th>
+                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider">Difficulty</th>
+                    <th scope="col" class="relative px-6 py-3"><span class="sr-only">Actions</span></th>
+                </tr>
+            </thead>
+            <tbody class="divide-y divide-white/10">
+                @if (Model.Questions != null)
+                {
+                    @foreach (var question in Model.Questions!)
+                    {
+                        <tr>
+                            <td class="px-6 py-4 whitespace-normal text-sm font-medium text-white">@question.QuestionText</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-300">@question.Type!.Replace("_", " ")</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm">
+                                <span class="px-2 py-1 text-xs font-semibold rounded-full text-white @(question.Difficulty == "easy" ? "bg-green-600/70" : (question.Difficulty == "medium" ? "bg-yellow-600/70" : "bg-red-600/70"))">
+                                    @question.Difficulty
+                                </span>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                                <a href="#" class="text-blue-400 hover:text-blue-300">Edit</a>
+                            </td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
