@@ -1,0 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  @apply bg-gray-800 text-gray-100;
+}
+
+/* Progress bar styles for exam simulation */
+.exam-progress-container {
+  width: 8rem; /* w-32 equivalent */
+  @apply bg-gray-700 rounded-full h-2;
+}
+
+.exam-progress-bar {
+  @apply bg-primary h-2 rounded-full;
+  transition: width 0.3s ease;
+  width: var(--progress-width, 0%);
+}
