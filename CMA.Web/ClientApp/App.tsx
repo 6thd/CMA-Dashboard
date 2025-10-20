@@ -19,6 +19,8 @@ import TakeExamPage from './pages/TakeExamPage';
 import ExamSimulationPage from './pages/ExamSimulationPage';
 import AIDashboardPage from './pages/AIDashboardPage';
 import StudyLibraryPage from './pages/StudyLibraryPage';
+import StudyMaterialViewerPage from './pages/StudyMaterialViewerPage';
+import FlashcardsPage from './pages/FlashcardsPage';
 
 function App() {
   return (
@@ -42,6 +44,8 @@ function App() {
               <Route path="exam-simulation" element={<ExamSimulationPage />} />
               <Route path="ai-dashboard" element={<AIDashboardPage />} />
               <Route path="study-library" element={<StudyLibraryPage />} />
+              <Route path="study/:materialId" element={<StudyMaterialViewerPage />} />
+              <Route path="flashcards/:materialId" element={<FlashcardsPage />} />
             </Route>
           </Routes>
         </HashRouter>

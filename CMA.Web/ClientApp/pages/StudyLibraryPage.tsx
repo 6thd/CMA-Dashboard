@@ -166,113 +166,103 @@ export default function StudyLibraryPage() {
 
       {/* Quick Stats */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-        <Card>
-          <CardContent padding="md">
-            <div className="flex items-center gap-3">
-              <div className="p-2 bg-blue-100 rounded-lg">
-                <BookOpen className="w-5 h-5 text-blue-600" />
-              </div>
-              <div>
-                <p className="text-sm text-gray-600">?????? ??????</p>
-                <p className="text-2xl font-bold">{materials.length}</p>
-              </div>
+        <Card padding="md">
+          <div className="flex items-center gap-3">
+            <div className="p-2 bg-blue-100 rounded-lg">
+              <BookOpen className="w-5 h-5 text-blue-600" />
             </div>
-          </CardContent>
+            <div>
+              <p className="text-sm text-gray-600">?????? ??????</p>
+              <p className="text-2xl font-bold">{materials.length}</p>
+            </div>
+          </div>
         </Card>
 
-        <Card>
-          <CardContent padding="md">
-            <div className="flex items-center gap-3">
-              <div className="p-2 bg-green-100 rounded-lg">
-                <TrendingUp className="w-5 h-5 text-green-600" />
-              </div>
-              <div>
-                <p className="text-sm text-gray-600">????? ??????</p>
-                <p className="text-2xl font-bold">
-                  {Math.round(
-                    materials.reduce((acc, m) => acc + m.readProgress, 0) / materials.length
-                  )}
-                  %
-                </p>
-              </div>
+        <Card padding="md">
+          <div className="flex items-center gap-3">
+            <div className="p-2 bg-green-100 rounded-lg">
+              <TrendingUp className="w-5 h-5 text-green-600" />
             </div>
-          </CardContent>
+            <div>
+              <p className="text-sm text-gray-600">????? ??????</p>
+              <p className="text-2xl font-bold">
+                {Math.round(
+                  materials.reduce((acc, m) => acc + m.readProgress, 0) / materials.length
+                )}
+                %
+              </p>
+            </div>
+          </div>
         </Card>
 
-        <Card>
-          <CardContent padding="md">
-            <div className="flex items-center gap-3">
-              <div className="p-2 bg-purple-100 rounded-lg">
-                <BookMarked className="w-5 h-5 text-purple-600" />
-              </div>
-              <div>
-                <p className="text-sm text-gray-600">?????? ??????</p>
-                <p className="text-2xl font-bold">
-                  {materials.reduce((acc, m) => acc + m.bookmarks, 0)}
-                </p>
-              </div>
+        <Card padding="md">
+          <div className="flex items-center gap-3">
+            <div className="p-2 bg-purple-100 rounded-lg">
+              <BookMarked className="w-5 h-5 text-purple-600" />
             </div>
-          </CardContent>
+            <div>
+              <p className="text-sm text-gray-600">?????? ??????</p>
+              <p className="text-2xl font-bold">
+                {materials.reduce((acc, m) => acc + m.bookmarks, 0)}
+              </p>
+            </div>
+          </div>
         </Card>
 
-        <Card>
-          <CardContent padding="md">
-            <div className="flex items-center gap-3">
-              <div className="p-2 bg-yellow-100 rounded-lg">
-                <Clock className="w-5 h-5 text-yellow-600" />
-              </div>
-              <div>
-                <p className="text-sm text-gray-600">??? ???????</p>
-                <p className="text-2xl font-bold">24 ????</p>
-              </div>
+        <Card padding="md">
+          <div className="flex items-center gap-3">
+            <div className="p-2 bg-yellow-100 rounded-lg">
+              <Clock className="w-5 h-5 text-yellow-600" />
             </div>
-          </CardContent>
+            <div>
+              <p className="text-sm text-gray-600">??? ???????</p>
+              <p className="text-2xl font-bold">24 ????</p>
+            </div>
+          </div>
         </Card>
       </div>
 
       {/* Filters and Search */}
-      <Card>
-        <CardContent padding="md">
-          <div className="flex flex-col md:flex-row gap-4">
-            <div className="flex-1">
-              <Input
-                placeholder="???? ?? ??????..."
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                leftIcon={<Search className="w-4 h-4" />}
-              />
-            </div>
-
-            <div className="flex gap-2">
-              <select
-                value={selectedDifficulty}
-                onChange={(e) => setSelectedDifficulty(e.target.value)}
-                className="px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-              >
-                <option value="all">?? ?????????</option>
-                <option value="beginner">?????</option>
-                <option value="intermediate">?????</option>
-                <option value="advanced">?????</option>
-              </select>
-
-              <select
-                value={sortBy}
-                onChange={(e) => setSortBy(e.target.value as any)}
-                className="px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-              >
-                <option value="recent">??????</option>
-                <option value="progress">??????</option>
-                <option value="name">?????</option>
-              </select>
-            </div>
+      <Card padding="md">
+        <div className="flex flex-col md:flex-row gap-4">
+          <div className="flex-1">
+            <Input
+              placeholder="???? ?? ??????..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              leftIcon={<Search className="w-4 h-4" />}
+            />
           </div>
-        </CardContent>
+
+          <div className="flex gap-2">
+            <select
+              value={selectedDifficulty}
+              onChange={(e) => setSelectedDifficulty(e.target.value)}
+              className="px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            >
+              <option value="all">?? ?????????</option>
+              <option value="beginner">?????</option>
+              <option value="intermediate">?????</option>
+              <option value="advanced">?????</option>
+            </select>
+
+            <select
+              value={sortBy}
+              onChange={(e) => setSortBy(e.target.value as any)}
+              className="px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            >
+              <option value="recent">??????</option>
+              <option value="progress">??????</option>
+              <option value="name">?????</option>
+            </select>
+          </div>
+        </div>
       </Card>
 
       {/* Materials Grid */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {filteredMaterials.map((material) => (
-          <Card key={material.id} variant="bordered" className="hover:shadow-lg transition-shadow">
+          <Card key={material.id} variant="bordered" padding="lg" className="hover:shadow-lg transition-shadow">
             <CardHeader>
               <div className="flex items-start justify-between">
                 <div className="flex-1">
@@ -285,7 +275,7 @@ export default function StudyLibraryPage() {
               </div>
             </CardHeader>
 
-            <CardContent>
+            <CardContent padding="lg">
               {/* Progress Bar */}
               <div className="mb-4">
                 <div className="flex items-center justify-between text-sm mb-1">
