@@ -3,7 +3,7 @@
  * Centralized HTTP request handler with error handling and interceptors
  */
 
-import { API_CONFIG } from '../config/api.config';
+import { API_CONFIG } from '@/config/api.config';
 
 interface RequestConfig extends RequestInit {
   timeout?: number;
