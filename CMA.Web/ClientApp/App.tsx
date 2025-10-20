@@ -18,6 +18,7 @@ import AnalyticsPage from './pages/AnalyticsPage';
 import TakeExamPage from './pages/TakeExamPage';
 import ExamSimulationPage from './pages/ExamSimulationPage';
 import AIDashboardPage from './pages/AIDashboardPage';
+import StudyLibraryPage from './pages/StudyLibraryPage';
 
 function App() {
   return (
@@ -40,6 +41,7 @@ function App() {
               <Route path="settings" element={<SettingsPage />} />
               <Route path="exam-simulation" element={<ExamSimulationPage />} />
               <Route path="ai-dashboard" element={<AIDashboardPage />} />
+              <Route path="study-library" element={<StudyLibraryPage />} />
             </Route>
           </Routes>
         </HashRouter>
