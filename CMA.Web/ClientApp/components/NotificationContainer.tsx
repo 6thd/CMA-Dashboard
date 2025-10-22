@@ -4,7 +4,7 @@
  */
 
 import React, { useEffect } from 'react';
-import { useAppStore } from '@/store/useAppStore';
+import { useAppStore } from '../store/useAppStore';
 import { X, CheckCircle, XCircle, AlertTriangle, Info } from 'lucide-react';
 
 interface ToastProps {
@@ -15,7 +15,7 @@ interface ToastProps {
   onClose: () => void;
 }
 
-const Toast: React.FC<ToastProps> = ({ id, type, title, message, onClose }) => {
+const Toast: React.FC<ToastProps> = ({ type, title, message, onClose }) => {
   useEffect(() => {
     const timer = setTimeout(() => {
       onClose();
@@ -60,12 +60,12 @@ const Toast: React.FC<ToastProps> = ({ id, type, title, message, onClose }) => {
 };
 
 export const NotificationContainer: React.FC = () => {
-  const notifications = useAppStore((state) => state.notifications);
-  const removeNotification = useAppStore((state) => state.removeNotification);
+  const notifications = useAppStore(state => state.notifications);
+  const removeNotification = useAppStore(state => state.removeNotification);
 
   return (
     <div className="fixed top-4 right-4 z-50 space-y-2">
-      {notifications.slice(0, 5).map((notification) => (
+      {notifications.slice(0, 5).map(notification => (
         <Toast
           key={notification.id}
           id={notification.id}
@@ -81,17 +81,15 @@ export const NotificationContainer: React.FC = () => {
 
 // Custom hook for notifications
 export function useNotification() {
-  const addNotification = useAppStore((state) => state.addNotification);
+  const addNotification = useAppStore(state => state.addNotification);
 
   return {
     success: (title: string, message: string) =>
       addNotification({ type: 'success', title, message }),
-    error: (title: string, message: string) =>
-      addNotification({ type: 'error', title, message }),
+    error: (title: string, message: string) => addNotification({ type: 'error', title, message }),
     warning: (title: string, message: string) =>
       addNotification({ type: 'warning', title, message }),
-    info: (title: string, message: string) =>
-      addNotification({ type: 'info', title, message }),
+    info: (title: string, message: string) => addNotification({ type: 'info', title, message }),
   };
 }
 

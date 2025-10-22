@@ -7,11 +7,11 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), '');
+  const perplexityKey = env.VITE_PERPLEXITY_API_KEY || env.PERPLEXITY_API_KEY || env.API_KEY || '';
   return {
     plugins: [react()],
     define: {
-      'process.env.API_KEY': JSON.stringify(env.API_KEY),
-      'process.env.GEMINI_API_KEY': JSON.stringify(env.API_KEY)
+      'process.env.PERPLEXITY_API_KEY': JSON.stringify(perplexityKey),
     },
     server: {
       port: 3001,
@@ -24,7 +24,7 @@ export default defineConfig(({ mode }) => {
     resolve: {
       alias: {
         '@': path.resolve(__dirname, '.'),
-      }
+      },
     },
-  }
+  };
 });

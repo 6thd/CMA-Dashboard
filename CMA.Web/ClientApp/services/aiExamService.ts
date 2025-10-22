@@ -118,8 +118,8 @@ export class AIExamService {
     });
     
     // Ensure we have exactly the requested number of questions
-    let totalAllocated = Object.values(questionsPerSection).reduce((sum, count) => sum + count, 0);
-    let diff = questionCount - totalAllocated;
+    const totalAllocated = Object.values(questionsPerSection).reduce((sum, count) => sum + count, 0);
+    const diff = questionCount - totalAllocated;
     
     // Adjust allocation if needed
     if (diff !== 0) {

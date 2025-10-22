@@ -21,6 +21,7 @@ import AIDashboardPage from './pages/AIDashboardPage';
 import StudyLibraryPage from './pages/StudyLibraryPage';
 import StudyMaterialViewerPage from './pages/StudyMaterialViewerPage';
 import FlashcardsPage from './pages/FlashcardsPage';
+import PracticeExamPage from './pages/PracticeExamPage';
 
 function App() {
   return (
@@ -46,6 +47,7 @@ function App() {
               <Route path="study-library" element={<StudyLibraryPage />} />
               <Route path="study/:materialId" element={<StudyMaterialViewerPage />} />
               <Route path="flashcards/:materialId" element={<FlashcardsPage />} />
+              <Route path="practice-exam/:materialId" element={<PracticeExamPage />} />
             </Route>
           </Routes>
         </HashRouter>

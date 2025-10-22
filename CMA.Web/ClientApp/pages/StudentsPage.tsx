@@ -13,13 +13,12 @@ const MOCK_STUDENTS: Student[] = [
 ];
 
 const StatusChip: React.FC<{ status: Student['status'] }> = ({ status }) => {
-    const baseClasses = 'px-2 py-1 text-xs font-semibold rounded-full text-white text-shadow';
-    const statusClasses = {
-        active: 'bg-secondary/70',
-        inactive: 'bg-gray-500/70',
-        suspended: 'bg-danger/70',
+    const statusStyles = {
+        active: 'bg-green-500/20 text-green-300 border border-green-500/30',
+        inactive: 'bg-gray-500/20 text-gray-300 border border-gray-500/30',
+        suspended: 'bg-red-500/20 text-red-400 border border-red-500/30',
     };
-    return <span className={`${baseClasses} ${statusClasses[status]}`}>{status.charAt(0).toUpperCase() + status.slice(1)}</span>;
+    return <span className={`px-3 py-1 text-xs font-semibold rounded-full ${statusStyles[status]}`}>{status.charAt(0).toUpperCase() + status.slice(1)}</span>;
 };
 
 
@@ -75,7 +74,11 @@ const StudentsPage: React.FC = () => {
       }
     }
 
-    if (loading) return <div className="text-white text-shadow">Loading students...</div>;
+    if (loading) return (
+      <div className="flex justify-center items-center h-64">
+        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-primary"></div>
+      </div>
+    );
 
     return (
         <div>
@@ -83,7 +86,7 @@ const StudentsPage: React.FC = () => {
                 <h1 className="text-3xl font-bold text-white text-shadow">Students</h1>
                 <button 
                   onClick={() => handleOpenModal()} 
-                  className="w-full md:w-auto px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary-dark transition-colors shadow-lg disabled:bg-gray-500/50 disabled:cursor-not-allowed"
+                  className="w-full md:w-auto px-4 py-2.5 bg-primary hover:bg-primary-dark text-white rounded-lg transition-all duration-200 shadow-lg disabled:bg-gray-500/50 disabled:cursor-not-allowed focus:outline-none focus:ring-2 focus:ring-primary"
                   disabled={isModerator}
                   title={isModerator ? "You don't have permission to add students" : "Add a new student"}
                 >
@@ -92,11 +95,11 @@ const StudentsPage: React.FC = () => {
             </div>
 
             {/* Desktop Table */}
-            <div className="hidden md:block bg-glass backdrop-blur-lg border border-white/20 shadow-xl rounded-lg overflow-hidden">
+            <div className="hidden md:block bg-surface/80 backdrop-blur-lg border border-white/20 shadow-glass rounded-2xl overflow-hidden transition-all duration-300 hover:shadow-glass-lg">
                 <table className="min-w-full leading-normal">
                     <thead>
                         <tr className="bg-white/10 border-b border-white/20">
-                            <th scope="col" className="px-6 py-3">
+                            <th scope="col" className="px-6 py-3 text-left text-xs font-semibold text-white uppercase tracking-wider text-shadow">
                                 Student Name
                             </th>
                             <th className="px-6 py-3 text-left text-xs font-semibold text-white uppercase tracking-wider text-shadow">Email</th>
@@ -107,24 +110,29 @@ const StudentsPage: React.FC = () => {
                     </thead>
                     <tbody>
                         {students.map(student => (
-                            <tr key={student.id} className="border-b border-white/20 hover:bg-white/10 transition-colors">
+                            <tr key={student.id} className="border-b border-white/20 hover:bg-white/10 transition-all duration-200">
                                 <td className="px-6 py-4">
-                                    <Link to={`/student/${student.id}`} className="font-medium text-primary hover:underline">{student.full_name}</Link>
+                                    <Link to={`/student/${student.id}`} className="font-medium text-primary hover:underline focus:outline-none focus:underline">{student.full_name}</Link>
                                 </td>
-                                <td className="px-6 py-4">
+                                <td className="px-6 py-4 text-gray-300">
                                     {student.email}
                                 </td>
-                                <td className="px-6 py-4">
+                                <td className="px-6 py-4 text-gray-300">
                                     {new Date(student.enrollment_date).toLocaleDateString()}
                                 </td>
                                 <td className="px-6 py-4">
                                     <StatusChip status={student.status} />
                                 </td>
                                 <td className="px-6 py-4">
-                                    <button onClick={() => handleOpenModal(student)} className="text-blue-300 hover:text-blue-100 mr-3 font-semibold">Edit</button>
+                                    <button 
+                                      onClick={() => handleOpenModal(student)} 
+                                      className="text-blue-400 hover:text-blue-300 mr-4 font-semibold focus:outline-none focus:underline"
+                                    >
+                                      Edit
+                                    </button>
                                     <button 
                                       onClick={() => handleDeleteStudent(student.id)} 
-                                      className="text-red-400 hover:text-red-200 font-semibold disabled:text-gray-500 disabled:cursor-not-allowed"
+                                      className="text-red-500 hover:text-red-400 font-semibold disabled:text-gray-500 disabled:cursor-not-allowed focus:outline-none focus:underline"
                                       disabled={isModerator}
                                       title={isModerator ? "You don't have permission to delete students" : "Delete student"}
                                     >
@@ -140,16 +148,21 @@ const StudentsPage: React.FC = () => {
             {/* Mobile Cards */}
             <div className="grid grid-cols-1 gap-4 md:hidden">
                 {students.map(student => (
-                    <div key={student.id} className="bg-glass backdrop-blur-lg border border-white/20 shadow-xl rounded-lg p-4 space-y-2">
+                    <div key={student.id} className="bg-surface/80 backdrop-blur-lg border border-white/20 shadow-glass rounded-2xl p-4 space-y-2 transition-all duration-300 hover:shadow-glass-lg">
                         <div className="font-bold text-white text-lg">{student.full_name}</div>
                         <div className="text-sm text-gray-200">{student.email}</div>
                         <div className="text-sm text-gray-300">Enrolled: {new Date(student.enrollment_date).toLocaleDateString()}</div>
                         <div><StatusChip status={student.status} /></div>
                         <div className="pt-2 border-t border-white/10 flex justify-end space-x-4">
-                            <button onClick={() => handleOpenModal(student)} className="text-blue-300 hover:text-blue-100 font-semibold">Edit</button>
+                            <button 
+                              onClick={() => handleOpenModal(student)} 
+                              className="text-blue-300 hover:text-blue-100 font-semibold focus:outline-none focus:underline"
+                            >
+                              Edit
+                            </button>
                              <button 
                                 onClick={() => handleDeleteStudent(student.id)} 
-                                className="text-red-400 hover:text-red-200 font-semibold disabled:text-gray-500 disabled:cursor-not-allowed"
+                                className="text-red-400 hover:text-red-200 font-semibold disabled:text-gray-500 disabled:cursor-not-allowed focus:outline-none focus:underline"
                                 disabled={isModerator}
                              >
                                 Delete
@@ -196,20 +209,49 @@ const StudentForm: React.FC<StudentFormProps> = ({ student, onSave, onClose }) =
             <form onSubmit={handleSubmit}>
                 <div className="space-y-4">
                     <div>
-                        <label htmlFor="full_name" className="block text-sm font-medium text-gray-200">Full Name</label>
-                        <input id="full_name" type="text" name="full_name" value={formData.full_name} onChange={handleChange} className="mt-1 block w-full px-3 py-2 bg-white/10 border border-white/30 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary sm:text-sm text-white placeholder-gray-400" required />
+                        <label htmlFor="full_name" className="block text-sm font-medium text-gray-200 mb-1">Full Name</label>
+                        <input 
+                          id="full_name" 
+                          type="text" 
+                          name="full_name" 
+                          value={formData.full_name} 
+                          onChange={handleChange} 
+                          className="mt-1 block w-full px-4 py-2.5 bg-white/10 border border-white/30 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary sm:text-sm text-white placeholder-gray-400 transition-all duration-200" 
+                          required 
+                        />
                     </div>
                     <div>
-                        <label htmlFor="email" className="block text-sm font-medium text-gray-200">Email</label>
-                        <input id="email" type="email" name="email" value={formData.email} onChange={handleChange} className="mt-1 block w-full px-3 py-2 bg-white/10 border border-white/30 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary sm:text-sm text-white placeholder-gray-400" required />
+                        <label htmlFor="email" className="block text-sm font-medium text-gray-200 mb-1">Email</label>
+                        <input 
+                          id="email" 
+                          type="email" 
+                          name="email" 
+                          value={formData.email} 
+                          onChange={handleChange} 
+                          className="mt-1 block w-full px-4 py-2.5 bg-white/10 border border-white/30 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary sm:text-sm text-white placeholder-gray-400 transition-all duration-200" 
+                          required 
+                        />
                     </div>
                     <div>
-                        <label htmlFor="phone" className="block text-sm font-medium text-gray-200">Phone</label>
-                        <input id="phone" type="tel" name="phone" value={formData.phone} onChange={handleChange} className="mt-1 block w-full px-3 py-2 bg-white/10 border border-white/30 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary sm:text-sm text-white placeholder-gray-400" />
+                        <label htmlFor="phone" className="block text-sm font-medium text-gray-200 mb-1">Phone</label>
+                        <input 
+                          id="phone" 
+                          type="tel" 
+                          name="phone" 
+                          value={formData.phone} 
+                          onChange={handleChange} 
+                          className="mt-1 block w-full px-4 py-2.5 bg-white/10 border border-white/30 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary sm:text-sm text-white placeholder-gray-400 transition-all duration-200" 
+                        />
                     </div>
                     <div>
-                        <label htmlFor="status" className="block text-sm font-medium text-gray-200">Status</label>
-                        <select id="status" name="status" value={formData.status} onChange={handleChange} className="mt-1 block w-full pl-3 pr-10 py-2 text-base bg-white/10 border-white/30 focus:outline-none focus:ring-primary focus:border-primary sm:text-sm rounded-md text-white">
+                        <label htmlFor="status" className="block text-sm font-medium text-gray-200 mb-1">Status</label>
+                        <select 
+                          id="status" 
+                          name="status" 
+                          value={formData.status} 
+                          onChange={handleChange} 
+                          className="mt-1 block w-full pl-4 pr-10 py-2.5 text-base bg-white/10 border-white/30 focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary sm:text-sm rounded-lg text-white transition-all duration-200"
+                        >
                             <option className="text-black" value="active">Active</option>
                             <option className="text-black" value="inactive">Inactive</option>
                             <option className="text-black" value="suspended">Suspended</option>
@@ -217,10 +259,16 @@ const StudentForm: React.FC<StudentFormProps> = ({ student, onSave, onClose }) =
                     </div>
                 </div>
                 <div className="mt-6 flex justify-end space-x-3">
-                    <button type="button" onClick={onClose} className="px-4 py-2 bg-white/10 text-white rounded-lg hover:bg-white/20">Cancel</button>
+                    <button 
+                      type="button" 
+                      onClick={onClose} 
+                      className="px-4 py-2.5 bg-white/10 hover:bg-white/20 text-white rounded-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white/30"
+                    >
+                      Cancel
+                    </button>
                     <button 
                       type="submit" 
-                      className="px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary-dark disabled:bg-gray-500/50 disabled:cursor-not-allowed"
+                      className="px-4 py-2.5 bg-primary hover:bg-primary-dark text-white rounded-lg transition-all duration-200 shadow-md hover:shadow-lg disabled:bg-gray-500/50 disabled:cursor-not-allowed focus:outline-none focus:ring-2 focus:ring-primary"
                       disabled={isModerator && !student} // Disable save only for new students if moderator
                       title={isModerator && !student ? "You don't have permission to add students" : "Save changes"}
                     >

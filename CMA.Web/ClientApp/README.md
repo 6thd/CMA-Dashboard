@@ -15,7 +15,7 @@ A comprehensive admin dashboard for CMA (Certified Management Accountant) exam p
 ## Technology Stack
 
 - **Frontend**: React 19, TypeScript, Vite, Tailwind CSS
-- **AI Integration**: Google Gemini API for intelligent assistance
+- **AI Integration**: Perplexity API for intelligent assistance
 - **State Management**: Redux
 - **Routing**: React Router v7
 - **Data Visualization**: Recharts

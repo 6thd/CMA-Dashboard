@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="WelcomeMessage" xml:space="preserve">
+    <value>Welcome to the CMA Exam Preparation System</value>
+  </data>
+  <data name="DashboardTitle" xml:space="preserve">
+    <value>Dashboard</value>
+  </data>
+  <data name="TotalStudents" xml:space="preserve">
+    <value>Total Students</value>
+  </data>
+  <data name="ActiveExams" xml:space="preserve">
+    <value>Active Exams</value>
+  </data>
+  <data name="TotalAttempts" xml:space="preserve">
+    <value>Total Attempts</value>
+  </data>
+  <data name="AverageScore" xml:space="preserve">
+    <value>Average Score</value>
+  </data>
+</root>

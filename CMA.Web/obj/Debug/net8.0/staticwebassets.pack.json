@@ -1,12 +1,16 @@
 {
   "Files": [
     {
-      "Id": "C:\\Users\\mojah\\Downloads\\CMA\\CMA.Web\\wwwroot\\assets\\index-B1X0EKXF.css",
-      "PackagePath": "staticwebassets\\assets\\index-B1X0EKXF.css"
+      "Id": "C:\\Users\\mojah\\Downloads\\CMA\\CMA.Web\\wwwroot\\assets\\browser-ponyfill-BNNKveIg.js",
+      "PackagePath": "staticwebassets\\assets\\browser-ponyfill-BNNKveIg.js"
     },
     {
-      "Id": "C:\\Users\\mojah\\Downloads\\CMA\\CMA.Web\\wwwroot\\assets\\index-D-IkAHJr.js",
-      "PackagePath": "staticwebassets\\assets\\index-D-IkAHJr.js"
+      "Id": "C:\\Users\\mojah\\Downloads\\CMA\\CMA.Web\\wwwroot\\assets\\index-BV072zvC.css",
+      "PackagePath": "staticwebassets\\assets\\index-BV072zvC.css"
+    },
+    {
+      "Id": "C:\\Users\\mojah\\Downloads\\CMA\\CMA.Web\\wwwroot\\assets\\index-fzSK4C8o.js",
+      "PackagePath": "staticwebassets\\assets\\index-fzSK4C8o.js"
     },
     {
       "Id": "C:\\Users\\mojah\\Downloads\\CMA\\CMA.Web\\wwwroot\\favicon.ico",
@@ -15,6 +19,22 @@
     {
       "Id": "C:\\Users\\mojah\\Downloads\\CMA\\CMA.Web\\wwwroot\\index.html",
       "PackagePath": "staticwebassets\\index.html"
+    },
+    {
+      "Id": "C:\\Users\\mojah\\Downloads\\CMA\\CMA.Web\\wwwroot\\inline.css",
+      "PackagePath": "staticwebassets\\inline.css"
+    },
+    {
+      "Id": "C:\\Users\\mojah\\Downloads\\CMA\\CMA.Web\\wwwroot\\locales\\ar\\translation.json",
+      "PackagePath": "staticwebassets\\locales\\ar\\translation.json"
+    },
+    {
+      "Id": "C:\\Users\\mojah\\Downloads\\CMA\\CMA.Web\\wwwroot\\locales\\en\\translation.json",
+      "PackagePath": "staticwebassets\\locales\\en\\translation.json"
+    },
+    {
+      "Id": "C:\\Users\\mojah\\Downloads\\CMA\\CMA.Web\\wwwroot\\materials\\CMA P1 2025 .pdf",
+      "PackagePath": "staticwebassets\\materials\\CMA P1 2025 .pdf"
     },
     {
       "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.CMA.Web.Microsoft.AspNetCore.StaticWebAssets.props",

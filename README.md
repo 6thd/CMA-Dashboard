@@ -47,8 +47,7 @@ cp .env.example .env.local
 Update `.env.local` with your configuration:
 
 ```env
-API_KEY=your-gemini-api-key-here
-GEMINI_API_KEY=your-gemini-api-key-here
+VITE_PERPLEXITY_API_KEY=your-perplexity-api-key-here
 VITE_API_URL=https://localhost:5001
 ```
 
@@ -66,6 +65,7 @@ dotnet restore
 **Option 1: Run Both Together (Recommended)**
 
 Open the solution in Visual Studio 2022 and press `F5`. This will:
+
 - Start the .NET backend
 - Automatically build the React frontend
 - Open your browser to the application
@@ -73,18 +73,21 @@ Open the solution in Visual Studio 2022 and press `F5`. This will:
 **Option 2: Run Separately**
 
 Terminal 1 (Backend):
+
 ```bash
 cd CMA.Web
 dotnet run
 ```
 
 Terminal 2 (Frontend):
+
 ```bash
 cd CMA.Web/ClientApp
 npm run dev
 ```
 
 The application will be available at:
+
 - Backend: https://localhost:5001
 - Frontend Dev Server: http://localhost:3001
 
@@ -187,6 +190,7 @@ CMA-Dashboard/
 ## ?? Key Dependencies
 
 ### Frontend
+
 - **React** 18.2.0 - UI library
 - **TypeScript** 5.8.2 - Type safety
 - **Vite** 7.1.9 - Build tool
@@ -197,6 +201,7 @@ CMA-Dashboard/
 - **pdf.js** 4.0.269 - PDF rendering
 
 ### Backend
+
 - **.NET** 8.0 - Runtime
 - **ASP.NET Core** 8.0 - Web framework
 - **iText7** 8.0.4 - PDF generation
@@ -216,6 +221,7 @@ This project is private and proprietary.
 ## ?? Support
 
 For issues, questions, or suggestions:
+
 - Open an issue on GitHub
 - Contact the development team
 

@@ -145,8 +145,9 @@ const ResultsPage: React.FC = () => {
                 
                 <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
                     <div>
-                        <label className="block text-sm font-medium text-gray-200 mb-1">Start Date</label>
+                        <label htmlFor="start-date" className="block text-sm font-medium text-gray-200 mb-1">Start Date</label>
                         <input
+                            id="start-date"
                             type="date"
                             value={dateRange.start}
                             onChange={(e) => setDateRange({...dateRange, start: e.target.value})}
@@ -155,8 +156,9 @@ const ResultsPage: React.FC = () => {
                     </div>
                     
                     <div>
-                        <label className="block text-sm font-medium text-gray-200 mb-1">End Date</label>
+                        <label htmlFor="end-date" className="block text-sm font-medium text-gray-200 mb-1">End Date</label>
                         <input
+                            id="end-date"
                             type="date"
                             value={dateRange.end}
                             onChange={(e) => setDateRange({...dateRange, end: e.target.value})}
@@ -165,8 +167,9 @@ const ResultsPage: React.FC = () => {
                     </div>
                     
                     <div>
-                        <label className="block text-sm font-medium text-gray-200 mb-1">Exam</label>
+                        <label htmlFor="exam-filter" className="block text-sm font-medium text-gray-200 mb-1">Exam</label>
                         <select
+                            id="exam-filter"
                             value={selectedExam}
                             onChange={(e) => setSelectedExam(e.target.value)}
                             className="w-full px-3 py-2 bg-white/10 border border-white/30 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary text-white"
@@ -179,8 +182,9 @@ const ResultsPage: React.FC = () => {
                     </div>
                     
                     <div>
-                        <label className="block text-sm font-medium text-gray-200 mb-1">Search</label>
+                        <label htmlFor="search-filter" className="block text-sm font-medium text-gray-200 mb-1">Search</label>
                         <input
+                            id="search-filter"
                             type="text"
                             placeholder="Student or exam name..."
                             value={searchTerm}

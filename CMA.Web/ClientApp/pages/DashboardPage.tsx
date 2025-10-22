@@ -12,6 +12,7 @@ import {
 } from 'recharts';
 import { MOCK_ATTEMPTS } from '../data/attempts.js';
 import { exportToCsv } from '../services/exportService.js';
+import LanguageTest from '../components/LanguageTest.js';
 
 // Mock Data
 const MOCK_STATS: DashboardStats = {
@@ -45,12 +46,12 @@ const StatCard: React.FC<{ title: string; value: string | number; icon: 'student
     };
 
     return (
-        <div className="bg-glass backdrop-blur-lg border border-white/20 rounded-lg shadow-xl p-6 flex items-center justify-between">
+        <div className="widget bg-surface/80 backdrop-blur-lg border border-white/20 rounded-2xl shadow-glass p-6 flex items-center justify-between transition-all duration-300 hover:shadow-glass-lg">
             <div>
                 <p className="text-sm font-medium text-gray-200 text-shadow">{title}</p>
                 <p className="text-3xl font-bold text-white text-shadow">{value}</p>
             </div>
-            <div className={`text-white rounded-full p-3 shadow-lg ${colors[icon]}`}>
+            <div className={`text-white rounded-full p-3 shadow-lg ${colors[icon]} transition-all duration-300 hover:scale-110`}>
                 {icons[icon]}
             </div>
         </div>
@@ -75,11 +76,14 @@ const WeakAreas: React.FC<{ attempts: ExamAttempt[] }> = ({ attempts }) => {
     }, [attempts]);
 
     return (
-        <div className="mt-8 bg-glass backdrop-blur-lg border border-white/20 rounded-lg shadow-xl p-6">
-            <h2 className="text-xl font-bold text-white text-shadow mb-4">Areas for Improvement</h2>
+        <div className="mt-8 bg-surface/80 backdrop-blur-lg border border-white/20 rounded-2xl shadow-glass p-6 transition-all duration-300 hover:shadow-glass-lg">
+            <div className="flex justify-between items-center mb-4">
+                <h2 className="text-xl font-bold text-white text-shadow">Areas for Improvement</h2>
+                <a href="#/analytics" className="text-sm text-blue-400 hover:underline focus:outline-none focus:underline">View All</a>
+            </div>
             <div className="space-y-4">
                 {weakAreas.map(area => (
-                    <div key={area.title} className="flex justify-between items-center p-3 bg-red-900/20 rounded-xl">
+                    <div key={area.title} className="flex justify-between items-center p-4 bg-red-900/20 rounded-xl transition-all duration-200 hover:bg-red-900/30">
                          <div>
                             <p className="font-medium text-gray-100">{area.title}</p>
                             <p className="text-sm text-gray-400">Needs review and targeted practice.</p>
@@ -112,12 +116,22 @@ const DashboardPage: React.FC = () => {
   }
 
   if (loading || !stats) {
-    return <div>Loading dashboard...</div>;
+    return (
+      <div className="flex justify-center items-center h-64">
+        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-primary"></div>
+      </div>
+    );
   }
 
   return (
     <div>
       <h1 className="text-3xl font-bold text-white text-shadow mb-6">Dashboard</h1>
+      
+      {/* Language Test Component */}
+      <div className="mb-6">
+        <LanguageTest />
+      </div>
+      
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         <StatCard title="Total Students" value={stats.totalStudents} icon="students" />
         <StatCard title="Active Exams" value={stats.activeExams} icon="exams" />
@@ -126,8 +140,16 @@ const DashboardPage: React.FC = () => {
       </div>
 
       <div className="mt-8 grid grid-cols-1 lg:grid-cols-3 gap-6">
-        <div className="lg:col-span-2 bg-glass backdrop-blur-lg border border-white/20 rounded-lg shadow-xl p-6">
-            <h2 className="text-xl font-bold text-white text-shadow mb-4">Exam Performance (CMA/FMAA)</h2>
+        <div className="lg:col-span-2 bg-surface/80 backdrop-blur-lg border border-white/20 rounded-2xl shadow-glass p-6 transition-all duration-300 hover:shadow-glass-lg">
+            <div className="flex justify-between items-center mb-4">
+              <h2 className="text-xl font-bold text-white text-shadow">Exam Performance (CMA/FMAA)</h2>
+              <button 
+                onClick={handleExport}
+                className="text-sm bg-secondary hover:bg-secondary/90 text-white px-3 py-1.5 rounded-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-secondary"
+              >
+                Export CSV
+              </button>
+            </div>
             <ResponsiveContainer width="100%" height={400}>
             <BarChart data={MOCK_PERFORMANCE_DATA}>
                 <CartesianGrid strokeDasharray="3 3" stroke="rgba(255, 255, 255, 0.2)" />
@@ -138,11 +160,13 @@ const DashboardPage: React.FC = () => {
                         backgroundColor: 'rgba(30, 41, 59, 0.9)',
                         borderColor: 'rgba(255, 255, 255, 0.2)',
                         color: '#fff',
+                        borderRadius: '0.5rem',
+                        border: '1px solid rgba(255, 255, 255, 0.2)'
                     }}
                 />
                 <Legend wrapperStyle={{ color: '#fff' }} />
-                <Bar dataKey="Avg Score" fill="rgba(8, 145, 178, 0.9)" />
-                <Bar dataKey="attempts" fill="rgba(16, 185, 129, 0.9)" />
+                <Bar dataKey="Avg Score" fill="rgba(8, 145, 178, 0.9)" animationDuration={1500} radius={[4, 4, 0, 0]} />
+                <Bar dataKey="attempts" fill="rgba(16, 185, 129, 0.9)" animationDuration={1500} radius={[4, 4, 0, 0]} />
             </BarChart>
             </ResponsiveContainer>
         </div>

@@ -4,6 +4,7 @@
  */
 
 import * as pdfjsLib from 'pdfjs-dist';
+import { ensurePdfWorker } from './pdfWorker';
 import { httpClient } from '@/utils/httpClient';
 
 export interface ExtractedQuestion {
@@ -38,6 +39,7 @@ class PDFService {
    */
   async extractText(fileUrl: string): Promise<string> {
     try {
+      ensurePdfWorker();
       const pdf = await pdfjsLib.getDocument(fileUrl).promise;
       const numPages = pdf.numPages;
       let fullText = '';
@@ -46,7 +48,11 @@ class PDFService {
         const page = await pdf.getPage(pageNum);
         const textContent = await page.getTextContent();
         const pageText = textContent.items
-          .map((item: any) => item.str)
+          .map((item: unknown) =>
+            typeof (item as { str?: string }).str === 'string'
+              ? ((item as { str?: string }).str as string)
+              : ''
+          )
           .join(' ');
         fullText += pageText + '\n\n';
       }
@@ -54,7 +60,7 @@ class PDFService {
       return fullText;
     } catch (error) {
       console.error('Error extracting text from PDF:', error);
-      throw new Error('??? ?? ??????? ???? ?? PDF');
+      throw new Error('فشل في استخراج النص من PDF');
     }
   }
 
@@ -63,6 +69,7 @@ class PDFService {
    */
   async extractTextByPage(fileUrl: string): Promise<Map<number, string>> {
     try {
+      ensurePdfWorker();
       const pdf = await pdfjsLib.getDocument(fileUrl).promise;
       const numPages = pdf.numPages;
       const pageTexts = new Map<number, string>();
@@ -71,7 +78,11 @@ class PDFService {
         const page = await pdf.getPage(pageNum);
         const textContent = await page.getTextContent();
         const pageText = textContent.items
-          .map((item: any) => item.str)
+          .map((item: unknown) =>
+            typeof (item as { str?: string }).str === 'string'
+              ? ((item as { str?: string }).str as string)
+              : ''
+          )
           .join(' ');
         pageTexts.set(pageNum, pageText);
       }
@@ -79,7 +90,7 @@ class PDFService {
       return pageTexts;
     } catch (error) {
       console.error('Error extracting text by page:', error);
-      throw new Error('??? ?? ??????? ???? ?? ???????');
+      throw new Error('فشل في استخراج النص من الصفحات');
     }
   }
 
@@ -96,7 +107,7 @@ class PDFService {
       return response.questions;
     } catch (error) {
       console.error('Error extracting questions:', error);
-      throw new Error('??? ?? ??????? ???????');
+      throw new Error('فشل في استخراج الأسئلة');
     }
   }
 
@@ -113,7 +124,7 @@ class PDFService {
       return response.topics;
     } catch (error) {
       console.error('Error extracting topics:', error);
-      throw new Error('??? ?? ??????? ????????');
+      throw new Error('فشل في استخراج المواضيع');
     }
   }
 
@@ -148,15 +159,14 @@ class PDFService {
    */
   async generateFlashcards(text: string): Promise<Array<{ front: string; back: string }>> {
     try {
-      const response = await httpClient.post<{ flashcards: Array<{ front: string; back: string }> }>(
-        '/api/ai/generate-flashcards',
-        { text }
-      );
+      const response = await httpClient.post<{
+        flashcards: Array<{ front: string; back: string }>;
+      }>('/api/ai/generate-flashcards', { text });
 
       return response.flashcards;
     } catch (error) {
       console.error('Error generating flashcards:', error);
-      throw new Error('??? ?? ????? ???????? ?????????');
+      throw new Error('فشل في توليد البطاقات التعليمية');
     }
   }
 
@@ -165,22 +175,25 @@ class PDFService {
    */
   async generateSummary(text: string, maxLength: number = 500): Promise<string> {
     try {
-      const response = await httpClient.post<{ summary: string }>(
-        '/api/ai/generate-summary',
-        { text, maxLength }
-      );
+      const response = await httpClient.post<{ summary: string }>('/api/ai/generate-summary', {
+        text,
+        maxLength,
+      });
 
       return response.summary;
     } catch (error) {
       console.error('Error generating summary:', error);
-      throw new Error('??? ?? ????? ??????');
+      throw new Error('فشل في توليد الملخص');
     }
   }
 
   /**
    * Search within PDF content
    */
-  searchInPDF(pageTexts: Map<number, string>, query: string): Array<{
+  searchInPDF(
+    pageTexts: Map<number, string>,
+    query: string
+  ): Array<{
     page: number;
     text: string;
     position: number;
@@ -256,11 +269,13 @@ class PDFService {
   /**
    * Extract table of contents
    */
-  async extractTableOfContents(fileUrl: string): Promise<Array<{
-    title: string;
-    page: number;
-    level: number;
-  }>> {
+  async extractTableOfContents(fileUrl: string): Promise<
+    Array<{
+      title: string;
+      page: number;
+      level: number;
+    }>
+  > {
     try {
       const pdf = await pdfjsLib.getDocument(fileUrl).promise;
       const outline = await pdf.getOutline();
@@ -271,22 +286,24 @@ class PDFService {
 
       const toc: Array<{ title: string; page: number; level: number }> = [];
 
-      const processOutline = async (items: any[], level: number = 0) => {
+      const processOutline = async (items: unknown[], level: number = 0) => {
         for (const item of items) {
-          if (item.dest) {
-            const dest = await pdf.getDestination(item.dest);
+          const outlineItem = item as { title?: string; dest?: unknown; items?: unknown[] };
+          if (outlineItem.dest) {
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            const dest = await pdf.getDestination(outlineItem.dest as any);
             if (dest) {
               const pageIndex = await pdf.getPageIndex(dest[0]);
               toc.push({
-                title: item.title,
+                title: outlineItem.title ?? '',
                 page: pageIndex + 1,
                 level,
               });
             }
           }
 
-          if (item.items && item.items.length > 0) {
-            await processOutline(item.items, level + 1);
+          if (outlineItem.items && outlineItem.items.length > 0) {
+            await processOutline(outlineItem.items, level + 1);
           }
         }
       };
@@ -315,17 +332,17 @@ class PDFService {
     try {
       const pdf = await pdfjsLib.getDocument(fileUrl).promise;
       const metadata = await pdf.getMetadata();
-      const info = metadata.info as any;
+      const info = metadata.info as Record<string, unknown>;
 
       return {
-        title: info.Title,
-        author: info.Author,
-        subject: info.Subject,
-        keywords: info.Keywords,
-        creator: info.Creator,
-        producer: info.Producer,
-        creationDate: info.CreationDate,
-        modificationDate: info.ModDate,
+        title: info?.Title as string | undefined,
+        author: info?.Author as string | undefined,
+        subject: info?.Subject as string | undefined,
+        keywords: info?.Keywords as string | undefined,
+        creator: info?.Creator as string | undefined,
+        producer: info?.Producer as string | undefined,
+        creationDate: info?.CreationDate as Date | undefined,
+        modificationDate: info?.ModDate as Date | undefined,
       };
     } catch (error) {
       console.error('Error getting PDF metadata:', error);

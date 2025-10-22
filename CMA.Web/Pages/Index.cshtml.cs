@@ -1,7 +1,8 @@
 using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
-
+using Microsoft.Extensions.Localization;
 using CMA.Web.Models;
+
 namespace CMA.Web.Pages
 {
     public class DashboardStats
@@ -15,13 +16,16 @@ namespace CMA.Web.Pages
     public class IndexModel : Microsoft.AspNetCore.Mvc.RazorPages.PageModel
     {
         private readonly ILogger<IndexModel> _logger;
+        private readonly IStringLocalizer<IndexModel> _localizer;
 
         public DashboardStats Stats { get; set; }
         public List<ExamAttempt> RecentAttempts { get; set; }
+        public IStringLocalizer<IndexModel> Localizer => _localizer;
 
-        public IndexModel(ILogger<IndexModel> logger)
+        public IndexModel(ILogger<IndexModel> logger, IStringLocalizer<IndexModel> localizer)
         {
             _logger = logger;
+            _localizer = localizer;
             Stats = new DashboardStats();
             RecentAttempts = new List<ExamAttempt>();
         }
@@ -44,6 +48,4 @@ namespace CMA.Web.Pages
             };
         }
     }
-
-    // Duplicate ExamAttempt class removed. Use the model from CMA.Web.Models.DataModels instead.
 }

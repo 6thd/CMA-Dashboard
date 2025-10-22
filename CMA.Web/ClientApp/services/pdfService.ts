@@ -1,27 +1,5 @@
 import * as pdfjsLib from 'pdfjs-dist';
-
-// Handle worker loading more robustly
-let workerInitialized = false;
-
-const initializeWorker = async () => {
-  if (workerInitialized) return;
-  
-  try {
-    // Try to load worker from CDN with https protocol (more reliable)
-    pdfjsLib.GlobalWorkerOptions.workerSrc = `https://cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjsLib.version}/pdf.worker.min.mjs`;
-    workerInitialized = true;
-  } catch (error) {
-    console.warn('Failed to load PDF worker from CDN, trying local build:', error);
-    try {
-      // Fallback to local build
-      pdfjsLib.GlobalWorkerOptions.workerSrc = '/node_modules/pdfjs-dist/build/pdf.worker.min.mjs';
-      workerInitialized = true;
-    } catch (localError) {
-      console.error('Failed to initialize PDF worker from local build:', localError);
-      throw new Error('Failed to initialize PDF processing worker from both CDN and local sources');
-    }
-  }
-};
+import { ensurePdfWorker } from './pdfWorker';
 
 export interface PDFParseResult {
   text: string;
@@ -33,37 +11,41 @@ export interface PDFParseResult {
 export class PDFService {
   static async parsePDF(file: File): Promise<PDFParseResult> {
     try {
-      // Initialize worker if not already done
-      await initializeWorker();
-      
+      // Ensure the correct local worker is configured (version-parity with API)
+      ensurePdfWorker();
+
       const arrayBuffer = await this.readFileAsArrayBuffer(file);
       const typedArray = new Uint8Array(arrayBuffer);
-      
+
       // Add parameters to handle common PDF issues
       const loadingTask = pdfjsLib.getDocument({
         data: typedArray,
         verbosity: 0,
         stopAtErrors: false,
-        disableFontFace: true
+        disableFontFace: true,
       });
-      
+
       const pdf = await loadingTask.promise;
-      
+
       let fullText = '';
-      
+
       // Process pages sequentially to avoid memory issues
       for (let i = 1; i <= pdf.numPages; i++) {
         try {
           const page = await pdf.getPage(i);
           const textContent = await page.getTextContent();
-          
+
           // Extract text with better formatting
           const pageText = textContent.items
-            .map((item: any) => item.str || '')
+            .map((item: unknown) =>
+              typeof (item as { str?: string }).str === 'string'
+                ? ((item as { str?: string }).str as string)
+                : ''
+            )
             .join(' ')
             .replace(/\s+/g, ' ') // Normalize whitespace
             .trim();
-            
+
           if (pageText) {
             fullText += pageText + '\n\n';
           }
@@ -72,26 +54,26 @@ export class PDFService {
           // Continue with other pages
         }
       }
-      
+
       // Clean up the text
       const cleanedText = this.cleanExtractedText(fullText);
-      
+
       return {
         text: cleanedText,
         pageCount: pdf.numPages,
-        fileName: file.name
+        fileName: file.name,
       };
-    } catch (error: any) {
-      console.error("Error parsing PDF:", error);
+    } catch (error: unknown) {
+      console.error('Error parsing PDF:', error);
       return {
         text: '',
         pageCount: 0,
         fileName: file.name,
-        error: error.message || 'Unknown error occurred while parsing PDF'
+        error: (error as Error)?.message || 'Unknown error occurred while parsing PDF',
       };
     }
   }
-  
+
   private static readFileAsArrayBuffer(file: File): Promise<ArrayBuffer> {
     return new Promise((resolve, reject) => {
       const reader = new FileReader();
@@ -100,19 +82,19 @@ export class PDFService {
       reader.readAsArrayBuffer(file);
     });
   }
-  
+
   private static cleanExtractedText(text: string): string {
     // Remove excessive whitespace and clean up text
     let cleaned = text
       .replace(/\s+/g, ' ') // Normalize all whitespace to single spaces
       .trim();
-    
+
     // Reduce multiple blank lines
-    const regex = new RegExp('\n\n\n', 'g');
+    const tripleNewline = /\n\n\n/g;
     while (cleaned.indexOf('\n\n\n') !== -1) {
-      cleaned = cleaned.replace(regex, '\n\n');
+      cleaned = cleaned.replace(tripleNewline, '\n\n');
     }
-    
+
     return cleaned;
   }
 }

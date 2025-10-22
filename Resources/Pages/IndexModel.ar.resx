@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="WelcomeMessage" xml:space="preserve">
+    <value>مرحبًا بكم في نظام تحضير امتحان CMA</value>
+  </data>
+  <data name="DashboardTitle" xml:space="preserve">
+    <value>لوحة التحكم</value>
+  </data>
+  <data name="TotalStudents" xml:space="preserve">
+    <value>إجمالي الطلاب</value>
+  </data>
+  <data name="ActiveExams" xml:space="preserve">
+    <value>الاختبارات النشطة</value>
+  </data>
+  <data name="TotalAttempts" xml:space="preserve">
+    <value>إجمالي المحاولات</value>
+  </data>
+  <data name="AverageScore" xml:space="preserve">
+    <value>متوسط الدرجات</value>
+  </data>
+</root>

@@ -1,5 +1,4 @@
 C:\Users\mojah\Downloads\CMA\CMA.Web\bin\Debug\net8.0\ClientApp\metadata.json
-C:\Users\mojah\Downloads\CMA\CMA.Web\bin\Debug\net8.0\ClientApp\package-lock.json
 C:\Users\mojah\Downloads\CMA\CMA.Web\bin\Debug\net8.0\ClientApp\package.json
 C:\Users\mojah\Downloads\CMA\CMA.Web\bin\Debug\net8.0\ClientApp\tsconfig.json
 C:\Users\mojah\Downloads\CMA\CMA.Web\bin\Debug\net8.0\CMA.Web.staticwebassets.runtime.json
@@ -42,3 +41,10 @@ C:\Users\mojah\Downloads\CMA\CMA.Web\obj\Debug\net8.0\refint\CMA.Web.dll
 C:\Users\mojah\Downloads\CMA\CMA.Web\obj\Debug\net8.0\CMA.Web.pdb
 C:\Users\mojah\Downloads\CMA\CMA.Web\obj\Debug\net8.0\CMA.Web.genruntimeconfig.cache
 C:\Users\mojah\Downloads\CMA\CMA.Web\obj\Debug\net8.0\ref\CMA.Web.dll
+C:\Users\mojah\Downloads\CMA\CMA.Web\obj\Debug\net8.0\CMA.Web.sourcelink.json
+C:\Users\mojah\Downloads\CMA\CMA.Web\bin\Debug\net8.0\ClientApp\package-lock.json
+C:\Users\mojah\Downloads\CMA\CMA.Web\bin\Debug\net8.0\ClientApp\public\locales\ar\translation.json
+C:\Users\mojah\Downloads\CMA\CMA.Web\bin\Debug\net8.0\ClientApp\public\locales\en\translation.json
+C:\Users\mojah\Downloads\CMA\CMA.Web\bin\Debug\net8.0\appsettings.Development.json
+C:\Users\mojah\Downloads\CMA\CMA.Web\bin\Debug\net8.0\appsettings.json
+C:\Users\mojah\Downloads\CMA\CMA.Web\bin\Debug\net8.0\ClientApp\.eslintrc.json

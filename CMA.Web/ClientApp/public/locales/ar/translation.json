@@ -11,10 +11,8 @@
   "settings": "الإعدادات",
   "examSimulation": "محاكاة الامتحان",
   "aiDashboard": "لوحة تحكم الذكاء الاصطناعي",
-  "studyLibrary": "المكتبة الدراسية",
   "profile": "الملف الشخصي",
   "logout": "تسجيل الخروج",
-  "notifications": "الإشعارات",
   "markAllAsRead": "تحديد الكل كمقروء",
   "viewAll": "عرض الكل",
   "noNotifications": "لا توجد إشعارات",
@@ -56,7 +54,7 @@
   "close": "إغلاق",
   "confirm": "تأكيد",
   "deleteConfirmation": "هل أنت متأكد أنك تريد حذف هذا العنصر؟",
-  
+
   "studyLibrary": {
     "title": "المكتبة الدراسية",
     "subtitle": "استعرض وادرس المواد التعليمية مع ميزات متقدمة للتعلم الفعّال",
@@ -80,9 +78,13 @@
     "generateQuestions": "توليد أسئلة",
     "flashcards": "بطاقات تعليمية",
     "download": "تحميل",
-    "progress": "التقدم"
+    "progress": "التقدم",
+    "cmaDescription": "مواد دراسية شاملة لـ CMA Part 1 - التخطيط المالي والأداء والتحليلات",
+    "loadingMaterial": "جارٍ تحميل المادة...",
+    "materialNotFound": "لم يتم العثور على المادة",
+    "notStarted": "لم تبدأ بعد"
   },
-  
+
   "pdfViewer": {
     "back": "العودة",
     "zoomIn": "تكبير",
@@ -106,9 +108,17 @@
     "save": "حفظ",
     "cancel": "إلغاء",
     "delete": "حذف",
-    "goToPage": "انتقل للصفحة"
+    "goToPage": "انتقل للصفحة",
+    "enterBookmarkTitle": "أدخل عنوان الإشارة:",
+    "loading": "جارٍ تحميل المستند...",
+    "generateQuestions": "توليد أسئلة",
+    "generating": "جاري التوليد...",
+    "noTextFound": "لا يوجد نص قابل للاستخراج من PDF",
+    "questionsGenerated": "تم توليد {{count}} سؤال بنجاح!",
+    "noQuestionsGenerated": "لم يتم توليد أسئلة. حاول مرة أخرى.",
+    "questionGenerationError": "حدث خطأ أثناء توليد الأسئلة"
   },
-  
+
   "flashcards": {
     "title": "البطاقات التعليمية",
     "subtitle": "مراجعة سريعة للمفاهيم الأساسية",
@@ -129,9 +139,15 @@
     "outOf": "من",
     "total": "إجمالي",
     "reviewAgainButton": "مراجعة مرة أخرى",
-    "backToLibraryButton": "العودة للمكتبة"
+    "backToLibraryButton": "العودة للمكتبة",
+    "noCardsAvailable": "لا توجد بطاقات متاحة",
+    "question": "السؤال",
+    "answer": "الإجابة",
+    "previous": "السابق",
+    "next": "التالي",
+    "keyboardShortcuts": "اختصارات لوحة المفاتيح: Space (قلب) | Y (أعرف) | N (لا أعرف)"
   },
-  
+
   "notifications": {
     "success": "نجاح",
     "error": "خطأ",
@@ -143,5 +159,36 @@
     "processingFlashcards": "جاري إنشاء البطاقات التعليمية...",
     "questionsFailed": "فشل في توليد الأسئلة",
     "flashcardsFailed": "فشل في إنشاء البطاقات"
+  },
+  "practiceExam": {
+    "title": "امتحان تدريبي",
+    "subtitle": "اختبر معرفتك بالمقرر الدراسي",
+    "totalQuestions": "عدد الأسئلة",
+    "estimatedTime": "الوقت المقدر",
+    "minutes": "دقيقة",
+    "startExam": "بدء الامتحان",
+    "question": "سؤال",
+    "previous": "السابق",
+    "next": "التالي",
+    "submitExam": "إنهاء الامتحان",
+    "passed": "نجحت!",
+    "needsImprovement": "يحتاج إلى تحسين",
+    "completedIn": "أكملت الامتحان في",
+    "score": "النتيجة",
+    "correct": "صحيحة",
+    "incorrect": "خاطئة",
+    "retryExam": "إعادة الامتحان",
+    "reviewAnswers": "مراجعة الإجابات",
+    "explanation": "التفسير",
+    "error": "حدث خطأ",
+    "noQuestions": "لا توجد أسئلة متاحة",
+    "noQuestionsDesc": "لم يتم العثور على أسئلة لهذا المقرر. يرجى العودة وإعادة المحاولة.",
+    "generatingQuestions": "جاري توليد الأسئلة...",
+    "pleaseWait": "قد يستغرق هذا عدة ثوانٍ..."
+  },
+  "common": {
+    "back": "العودة",
+    "loading": "جاري التحميل...",
+    "retry": "إعادة المحاولة"
   }
 }

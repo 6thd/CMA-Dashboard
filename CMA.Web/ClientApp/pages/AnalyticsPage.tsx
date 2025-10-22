@@ -56,6 +56,16 @@ const AnalyticsPage: React.FC = () => {
   ];
   const COLORS = ['#10b981', '#ef4444'];
 
+  const averageScoreByExam = Array.from(new Set(filteredAttempts.map(a => a.exam_id)))
+    .map(examId => {
+      const examAttempts = filteredAttempts.filter(a => a.exam_id === examId);
+      const avg = examAttempts.reduce((acc, a) => acc + a.percentage, 0) / examAttempts.length;
+      return {
+        name: examAttempts[0]?.exam_title || examId,
+        'Average Score': avg
+      };
+    });
+
   // Reset filters
   const resetFilters = () => {
     setDateRange({ start: '', end: '' });
@@ -177,6 +187,31 @@ const AnalyticsPage: React.FC = () => {
                 />
                 <Legend wrapperStyle={{ color: '#fff' }} />
               </PieChart>
+            </ResponsiveContainer>
+          ) : (
+            <div className="flex items-center justify-center h-64 text-gray-400">
+              No data available for selected filters
+            </div>
+          )}
+        </div>
+
+        <div className="bg-glass backdrop-blur-lg border border-white/20 rounded-lg shadow-xl p-6 col-span-1 lg:col-span-2">
+          <h2 className="text-xl font-semibold mb-4 text-white text-shadow">Average Score by Exam</h2>
+          {averageScoreByExam.length > 0 ? (
+            <ResponsiveContainer width="100%" height={300}>
+              <BarChart data={averageScoreByExam}>
+                <CartesianGrid strokeDasharray="3 3" stroke="rgba(255, 255, 255, 0.2)" />
+                <XAxis dataKey="name" tick={{ fill: '#ddd' }} className="text-shadow" />
+                <YAxis tick={{ fill: '#ddd' }} className="text-shadow" />
+                <Tooltip
+                  contentStyle={{
+                    backgroundColor: 'rgba(30, 41, 59, 0.8)',
+                    borderColor: 'rgba(255, 255, 255, 0.2)',
+                    color: '#fff',
+                  }}
+                />
+                <Bar dataKey="Average Score" fill="rgba(139, 92, 246, 0.9)" />
+              </BarChart>
             </ResponsiveContainer>
           ) : (
             <div className="flex items-center justify-center h-64 text-gray-400">
