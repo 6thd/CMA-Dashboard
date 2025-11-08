@@ -99,3 +99,16 @@ coverage/
 # OS files
 Thumbs.db
 .DS_Store
+
+# Python virtual environments
+venv/
+python_ocr_service/venv/
+
+# Large PDF files
+*.pdf
+!CMA.Web/wwwroot/*.pdf
+
+# Documentation (optional - can be committed if needed)
+# *_SUMMARY.md
+# *_STATUS.md
+# *_FIX*.md
